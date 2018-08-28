@@ -1,0 +1,17 @@
+.app{
+/* background-image: url('./resume.jpg'); */
+width: 100vw;
+height: 100vh;
+background-color: whitesmoke;
+/* background-position: center;
+background-size: contain; */
+}
+.appcontent{
+  margin: 0px 20px;
+}
+.section{
+  margin:10px 0px;
+}
+.button{
+  margin: 10px 0px;
+}
