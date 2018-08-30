@@ -8,6 +8,8 @@ var async = require ( 'async' );
 var officegen = require('officegen');
 var fs = require('fs');
 
+let port = process.env.PORT || 3000;
+
 app.use(express.static(path.join(__dirname,'../client/' ,'build')));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -438,6 +440,6 @@ app.post('/',(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server is up at the port 3000")
 })
