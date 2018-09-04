@@ -60,7 +60,6 @@ class PossesionAndHobby extends React.Component {
                                             }}
                                             onChange={(event) => {
                                                 this.setState({ achievementInput: event.target.value })
-                                                console.log(event.target.value)
                                             }} />
                                     </Col>
                                     <Button
@@ -118,7 +117,6 @@ class PossesionAndHobby extends React.Component {
                                             }}
                                             onChange={(event) => {
                                                 this.setState({ hobbyInput: event.target.value })
-                                                console.log(event.target.value)
                                             }} />
                                     </Col>
                                     <Button

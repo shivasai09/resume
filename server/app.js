@@ -22,6 +22,18 @@ app.get('/',(req,res)=>{
     res.send(path.join(__dirname,'../client/build', 'index.html'))
 })
 
+app.get('/download',(req,res)=>{
+    var options = {
+        root: __dirname + '/tmp/',
+    }
+    res.sendFile('demo.docx', options, function (err) {
+        if (err) {
+            console.log(err)
+        } else {
+          console.log('sent');
+        }
+      });
+})
 app.post('/',(req,res)=>{
     var docx = officegen ( {
         type: 'docx',

@@ -27,7 +27,6 @@ class CarrerObj extends React.Component {
         this.toggle = this.toggle.bind(this);
     }
     static getDerivedStateFromProps(props, state){
-        console.log(props)
     }
     toggle() {
         this.setState({ collapse: !this.state.collapse });

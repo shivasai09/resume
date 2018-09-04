@@ -18,6 +18,7 @@ class App extends Component {
     this.loadData = this.loadData.bind(this);
     this.makeResume = this.makeResume.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.downloadResume = this.downloadResume.bind(this);
     this.state = {
       isLoading: false,
       modal: false
@@ -80,7 +81,8 @@ class App extends Component {
         this.setState({
           isLoading:false,
           modal:true,
-          status:"yeah resume builded sucessfully"
+          status:"yeah resume builded sucessfully",
+          resumeMade:true
         })
       }
       else{
@@ -145,12 +147,27 @@ class App extends Component {
       modal: !this.state.modal
     });
   }
+
+  downloadResume(){
+    fetch('/download')
+    .then((res)=>res.blob())
+    .then((blob)=>{
+     let url=  URL.createObjectURL(blob);
+      let pom = document.createElement('a');
+      //pom.setAttribute('href', `data:${blob.type};charset=utf-8,` + encodeURIComponent(url));
+      pom.setAttribute('href',url)
+      pom.setAttribute('download', 'resume.docx');
+      pom.click();
+      console.log(blob);
+    })
+  }
   render() {
     return (
       <div className="app">
         <div className="appcontent">
           <Button color="secondary" onClick={this.loadData} className="button">load sample data</Button>{' '}
           <Button color="secondary" onClick={this.sendData}  className="button">send data an make Resume</Button>{' '}
+          {this.state.resumeMade && <Button color="danger" onClick={this.downloadResume} className="button">download Resume</Button>}
           <LoadingScreen
             loading={this.state.isLoading}
             bgColor='#f1f1f1'
